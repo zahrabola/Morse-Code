@@ -58,3 +58,27 @@ const MorseCode = {
     "@": ".--.-.",
     " ": "/",
 }
+
+//Morse code dictionanry needs to be reversed, to get the morsecode letters snd numbers
+
+const MorseCodeReverse = {};
+for (const key in MorseCode) {
+    if (MorseCode.hasOwnProperty(key)) {
+        const value = MorseCode[key];
+        MorseCodeReverse[value] = key;
+    }
+}
+
+const inputTextField = document.getElementById("textinput");
+const outputTextfield = document.getElementById("textoutput");
+const translateBtn = document.getElementById("translate");
+
+translateBtn.addEventListener("click", () => {
+    const inputText = inputTextField.value.trim().toUpperCase();
+    if (inputTextField === "" ){
+        outputTextfield.textContent = "Please Input text or morsecode";
+        return;
+    }
+
+    
+})
