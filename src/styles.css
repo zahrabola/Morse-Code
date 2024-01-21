@@ -1,7 +1,19 @@
+body{
+    background-color: rgb(255, 240, 255) ;
+}
 .container{
     margin-top: 40px;
 
 }
 .main{
     padding: 10px;
+}
+
+.btn-colour{
+    color: white;
+background-color: violet;
+}
+.btn-colour:hover{
+    color: violet;
+    background-color: rgb(253, 224, 253);
 }
