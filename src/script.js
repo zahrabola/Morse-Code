@@ -73,12 +73,42 @@ const inputTextField = document.getElementById("textinput");
 const outputTextfield = document.getElementById("textoutput");
 const translateBtn = document.getElementById("translate");
 
+
+
 translateBtn.addEventListener("click", () => {
     const inputText = inputTextField.value.trim().toUpperCase();
+    
     if (inputTextField === "" ){
         outputTextfield.textContent = "Please Input text or morsecode";
         return;
     }
 
-    
+ //Input contains dots and dash, it's Morse code and translating to text
+
+  if (inputText.includes(".")) {
+    const WordsMorse = inputText.split("/");
+    const WordsTranslated = WordsMorse.map((WordMorse) => {
+        const MorseCharacters = WordMorse.split(" ");
+        return MorseCharacters.map((MorseCharacter) => {
+            return MorseCodeReverse[MorseCharacter] || MorseCharacter
+        })
+        .join("")
+    });
+
+    outputTextfield.textContent= WordsTranslated.join(" ");
+  } else {
+     //Input is text, translating to Morse Code
+
+    const words = inputText.split("");
+    const WordsTranslated = words.map((word) => {
+    const Characters = word.split("");
+    const MorseCharacters = Characters.map((Character) => {
+        return MorseCode [Character] || Character;
+    });
+    return MorseCharacters.join(" ")
+
+    })
+    outputTextfield.textContent = WordsTranslated.join("/")
+  }
+
 })
