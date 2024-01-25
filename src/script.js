@@ -1,7 +1,7 @@
 //Morse Code Translator
 //Morse Code Dictionary
 
-const MorseCode = {
+const morseCode = {
     A: ".-",
     B: "-...",
     C: "-.-.",
@@ -61,11 +61,11 @@ const MorseCode = {
 
 //Morse code dictionanry needs to be reversed, to get the morsecode letters snd numbers
 
-const MorseCodeReverse = {};
-for (const key in MorseCode) {
-    if (MorseCode.hasOwnProperty(key)) {
-        const value = MorseCode[key];
-        MorseCodeReverse[value] = key;
+const morseCodeReverse = {};
+for (const key in morseCode) {
+    if (morseCode.hasOwnProperty(key)) {
+        const value = morseCode[key];
+        morseCodeReverse[value] = key;
     }
 }
 
@@ -86,29 +86,29 @@ translateBtn.addEventListener("click", () => {
  //Input contains dots and dash, it's Morse code and translating to text
 
   if (inputText.includes(".")) {
-    const WordsMorse = inputText.split("/");
-    const WordsTranslated = WordsMorse.map((WordMorse) => {
-        const MorseCharacters = WordMorse.split(" ");
-        return MorseCharacters.map((MorseCharacter) => {
-            return MorseCodeReverse[MorseCharacter] || MorseCharacter
+    const wordsMorse = inputText.split("/");
+    const wordsTranslated = wordsMorse.map((wordMorse) => {
+        const morseCharacters = wordMorse.split(" ");
+        return morseCharacters.map((morseCharacter) => {
+            return morseCodeReverse[morseCharacter] || morseCharacter
         })
         .join("")
     });
 
-    outputTextfield.textContent= WordsTranslated.join(" ");
+    outputTextfield.textContent= wordsTranslated.join(" ");
   } else {
      //Input is text, translating to Morse Code
 
     const words = inputText.split("");
-    const WordsTranslated = words.map((word) => {
-    const Characters = word.split("");
-    const MorseCharacters = Characters.map((Character) => {
-        return MorseCode [Character] || Character;
+    const wordsTranslated = words.map((word) => {
+    const characters = word.split("");
+    const morseCharacters = characters.map((character) => {
+        return morseCode [character] || character;
     });
-    return MorseCharacters.join(" ")
+    return morseCharacters.join(" ")
 
     })
-    outputTextfield.textContent = WordsTranslated.join("/")
+    outputTextfield.textContent = wordsTranslated.join("/")
   }
 
 })
